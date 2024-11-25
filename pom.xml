@@ -72,18 +72,6 @@
       <artifactId>lanterna</artifactId>
       <version>3.1.1</version>
     </dependency>
-    <dependency>
-      <groupId>com.googlecode.lanterna</groupId>
-      <artifactId>lanterna</artifactId>
-      <version>3.1.1</version>
-      <classifier>sources</classifier>
-    </dependency>
-    <dependency>
-      <groupId>com.googlecode.lanterna</groupId>
-      <artifactId>lanterna</artifactId>
-      <version>3.1.1</version>
-      <classifier>javadoc</classifier>
-    </dependency>
 
     <!-- Jackson -->
     <dependency>
@@ -94,9 +82,40 @@
 
     <!-- HTTP client for consuming backend APIs -->
     <dependency>
-      <groupId>org.apache.httpcomponents.client5</groupId>
-      <artifactId>httpclient5</artifactId>
-      <version>5.4</version>
+      <groupId>com.squareup.okhttp3</groupId>
+      <artifactId>okhttp</artifactId>
+      <version>4.12.0</version>
     </dependency>
+    <dependency>
+      <groupId>com.squareup.okhttp3</groupId>
+      <artifactId>logging-interceptor</artifactId>
+      <version>4.12.0</version>
+    </dependency>
+    <!-- Logging with logback -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>2.0.16</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>2.0.16</version>
+    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.slf4j</groupId>-->
+<!--      <artifactId>slf4j-log4j12</artifactId>-->
+<!--      <version>2.0.16</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.apache.logging.log4j</groupId>-->
+<!--      <artifactId>log4j-core</artifactId>-->
+<!--      <version>2.24.2</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.apache.logging.log4j</groupId>-->
+<!--      <artifactId>log4j-api</artifactId>-->
+<!--      <version>2.24.2</version>-->
+<!--    </dependency>-->
   </dependencies>
 </project>

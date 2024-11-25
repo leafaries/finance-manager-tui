@@ -1,11 +1,12 @@
-package com.leafaries.tui.controller;
+package archives.tui.controller;
 
-import com.leafaries.tui.service.UserService;
-import com.leafaries.tui.view.UserView;
+import archives.tui.view.UserView;
+import archives.tui.service.UserService;
 
 import java.util.List;
 
 public class UserController {
+
     private final UserService userService;
     private final UserView userView;
 
@@ -15,8 +16,10 @@ public class UserController {
     }
 
     public void showUsers() {
+        // Fetch user data from the service
         List<String> users = userService.getUsers();
 
+        // Display the users in the view
         userView.displayUsers(users);
     }
 }

@@ -1,34 +1,19 @@
 package com.leafaries.tui;
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//import com.leafaries.controller.CurrencyConverterController;
-//import com.leafaries.model.AbstractCurrencyConverterModel;
-//import com.leafaries.model.MockedCurrencyConverterModel;
-//import com.leafaries.view.CurrencyConverterView;
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Main {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
         try {
-            TUI tui = new TUI(); // Initialize TUI
-            Application app = new Application(tui.getGui()); // Initialize the application with TUI's GUI
-            app.run(); // Run the application
-            tui.cleanup(); // Clean up the screen
+            Tui tui = new Tui();
+            Application app = new Application(tui.getGui());
+            app.run();
+            tui.cleanup();
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error("Error during application startup: ", e);
         }
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//        // Initialize MVC components
-//        AbstractCurrencyConverterModel model = new MockedCurrencyConverterModel();
-//        CurrencyConverterView view = new CurrencyConverterView();
-//        CurrencyConverterController controller = new CurrencyConverterController(model, view);
-//
-//        // Run the app
-//        controller.run();
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
 }
-
