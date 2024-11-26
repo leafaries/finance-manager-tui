@@ -2,10 +2,10 @@ package com.leafaries.tui.view;
 
 import com.googlecode.lanterna.gui2.*;
 
-public class RegistrationScreen {
+public class RegistrationView {
     private final WindowBasedTextGUI gui;
 
-    public RegistrationScreen(WindowBasedTextGUI gui) {
+    public RegistrationView(WindowBasedTextGUI gui) {
         this.gui = gui;
     }
 
@@ -22,7 +22,7 @@ public class RegistrationScreen {
         registerPanel.addComponent(passwordField);
 
         registerPanel.addComponent(new Button("Register", () -> {
-            new RegistrationScreen(gui).show();
+            new RegistrationView(gui).show();
         }));
         // Repeat simlar actions for other screens
 

@@ -2,10 +2,10 @@ package com.leafaries.tui.view;
 
 import com.googlecode.lanterna.gui2.*;
 
-public class MainMenuScreen {
+public class MainMenuView {
     private final WindowBasedTextGUI gui;
 
-    public MainMenuScreen(WindowBasedTextGUI gui) {
+    public MainMenuView(WindowBasedTextGUI gui) {
         this.gui = gui;
     }
 
@@ -13,7 +13,7 @@ public class MainMenuScreen {
         BasicWindow mainMenuWindow = new BasicWindow("Main Menu"); // or "Finance Manager
         Panel mainPanel = new Panel(new GridLayout(2));
 
-        mainPanel.addComponent(new Button("Register", () -> new RegistrationScreen(gui).show()));
+        mainPanel.addComponent(new Button("Register", () -> new RegistrationView(gui).show()));
         // Repeat simlar actions for other screens
 
         mainMenuWindow.setComponent(mainPanel);
