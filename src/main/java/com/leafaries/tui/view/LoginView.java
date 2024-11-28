@@ -23,8 +23,6 @@ public class LoginView {
                      MainMenuView mainMenuView) {
         this.gui = gui;
         this.window = new BasicWindow("Login");
-        initializeComponents();
-//        logger.info("LoginView initialized");
     }
 
     private void initializeComponents() {
@@ -51,11 +49,10 @@ public class LoginView {
     }
 
     public void display() {
-        // Reset the state of the view
         logger.info("Displaying the LoginView");
-        usernameField.setText("");
-        passwordField.setText("");
+        initializeComponents();
         gui.addWindowAndWait(window);
+        logger.info("Closed the LoginView");
     }
 
     public void showMessage(String message) {
@@ -99,5 +96,10 @@ public class LoginView {
     public String getUsername() {
         logger.debug("Getting username field");
         return usernameField.getText();
+    }
+
+    public void close() {
+        window.close();
+        logger.info("LoginView window closed");
     }
 }

@@ -31,7 +31,8 @@ public class LoginController {
         logger.info("Starting login controller");
         loginView.setHandleLoginButtonPress(() -> handleLogin(loginView.getUsername(), loginView.getPassword()));
         loginView.setNavigateToRegistrationButtonPress(this::navigateToRegistrationView);
-        loginView.display();
+        registrationView.setNavigateToLoginButtonPress(this::navigateToLoginView);
+        navigateToLoginView();
     }
 
     public void handleLogin(String username, String password) {
@@ -39,6 +40,10 @@ public class LoginController {
         if (authenticationService.authenticate(username, password)) {
             logger.info("Authentication successful for username: {}", username);
             loginView.showMessage("Successfully logged in!");
+
+            loginView.close();
+            logger.info("Closed LoginView window after successful login");
+
             mainMenuView.display();
         } else {
             logger.warn("Authentication failed for username: {}", username);
@@ -48,7 +53,18 @@ public class LoginController {
     }
 
     public void navigateToRegistrationView() {
-        logger.info("Navigating to registration view");
+        logger.info("Navigating to RegistrationView");
+        loginView.close();
+        logger.info("Closed LoginView window before navigating to RegistrationView");
         registrationView.display();
+        logger.info("Finished navigation to RegistrationView");
+    }
+
+    public void navigateToLoginView() {
+        logger.info("Navigating to LoginView");
+        registrationView.close();
+        logger.info("Closed RegistrationView window before navigating to LoginView");
+        loginView.display();
+        logger.info("Finished navigation to LoginView");
     }
 }
