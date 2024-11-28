@@ -1,7 +1,9 @@
 package com.leafaries.tui.view;
 
 import com.googlecode.lanterna.gui2.*;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RegistrationView {
     private final WindowBasedTextGUI gui;
 
@@ -9,8 +11,8 @@ public class RegistrationView {
         this.gui = gui;
     }
 
-    public void show() {
-        BasicWindow mainMenuWindow = new BasicWindow("Register");
+    public void display() {
+        BasicWindow window = new BasicWindow("User Registration");
         Panel registerPanel = new Panel(new GridLayout(2));
 
         registerPanel.addComponent(new Label("Username:"));
@@ -22,11 +24,11 @@ public class RegistrationView {
         registerPanel.addComponent(passwordField);
 
         registerPanel.addComponent(new Button("Register", () -> {
-            new RegistrationView(gui).show();
+            // TODO: Implement backend API call to register a user
+            window.close();
         }));
-        // Repeat simlar actions for other screens
 
-        mainMenuWindow.setComponent(registerPanel);
-        gui.addWindowAndWait(registerPanel);
+        window.setComponent(registerPanel);
+        gui.addWindowAndWait(window);
     }
 }

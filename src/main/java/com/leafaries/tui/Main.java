@@ -1,19 +1,15 @@
 package com.leafaries.tui;
 
+import com.leafaries.tui.config.AppConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
-    private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
-
     public static void main(String[] args) {
-        Tui tui = new Tui();
-
-        Application app = new Application(tui.getGui());
-        app.run();
-
-        tui.cleanup();
+        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class)) {
+            Application app = context.getBean(Application.class);
+            app.run();
+        }
     }
 }

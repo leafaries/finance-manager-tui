@@ -1,29 +1,29 @@
 package com.leafaries.tui;
 
-import com.googlecode.lanterna.gui2.WindowBasedTextGUI;
+import com.leafaries.tui.controller.LoginController;
 import com.leafaries.tui.controller.UserController;
-import com.leafaries.tui.service.UserService;
-import com.leafaries.tui.view.MainMenuView;
-import com.leafaries.tui.view.UserView;
+import com.leafaries.tui.exceptions.ScreenInitializationException;
+import com.leafaries.tui.service.NavigationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
+@Component
 public class Application {
     private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
 
-    private final UserController userController;
-    private final MainMenuView mainMenuView;
+    private final NavigationService navigationService;
 
-    // Dependency injection
-    public Application(WindowBasedTextGUI gui) {
-        UserService userService = new UserService();
-        UserView userView = new UserView(gui);
-        this.userController = new UserController(userService, userView);
-
-        this.mainMenuView = new MainMenuView(gui);
+    // TODO: Import more (all) controllers to controll the flow of the entire app from this class
+    public Application(NavigationService navigationService) {
+        this.navigationService = navigationService;
     }
 
     public void run() {
-        userController.showUsers();
+        LOGGER.info("Starting application");
+        navigationService.login();
+        LOGGER.info("Ending application");
     }
 }

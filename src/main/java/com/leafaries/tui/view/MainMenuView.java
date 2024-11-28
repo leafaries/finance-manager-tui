@@ -1,22 +1,44 @@
 package com.leafaries.tui.view;
 
 import com.googlecode.lanterna.gui2.*;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MainMenuView {
     private final WindowBasedTextGUI gui;
 
-    public MainMenuView(WindowBasedTextGUI gui) {
+    private final RegistrationView registrationView;
+    private final TransactionView transactionView;
+    private final UserView userView;
+    private final WalletScreen walletScreen;
+
+    public MainMenuView(WindowBasedTextGUI gui,
+                        RegistrationView registrationView,
+                        TransactionView transactionView,
+                        UserView userView,
+                        WalletScreen walletScreen) {
         this.gui = gui;
+        this.registrationView = registrationView;
+        this.transactionView = transactionView;
+        this.userView = userView;
+        this.walletScreen = walletScreen;
     }
 
-    public void show() {
-        BasicWindow mainMenuWindow = new BasicWindow("Main Menu"); // or "Finance Manager
-        Panel mainPanel = new Panel(new GridLayout(2));
+    public void display() {
+        BasicWindow mainMenuWindow = new BasicWindow("Main Menu");
+        Panel mainMenuPanel = new Panel(new GridLayout(1));
 
-        mainPanel.addComponent(new Button("Register", () -> new RegistrationView(gui).show()));
-        // Repeat simlar actions for other screens
+//        mainMenuPanel.addComponent(new Button("Register", () -> {
+//            gui.addWindowAndWait(registrationView.createWindow());
+//        }));
+//        mainMenuPanel.addComponent(new Button("Transactions", () -> {
+//            gui.addWindowAndWait(transactionView.createUserManagementWindow());
+//        }));
+//        mainMenuPanel.addComponent(new Button("Manage Users", () -> {
+//            gui.addWindowAndWait(walletScreen.show());
+//        }));
 
-        mainMenuWindow.setComponent(mainPanel);
-        gui.addWindowAndWait(mainPanel);
+        mainMenuWindow.setComponent(mainMenuPanel);
+        gui.addWindowAndWait(mainMenuWindow);
     }
 }
