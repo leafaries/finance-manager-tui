@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class LoginController {
-    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+    private static final Logger log = LoggerFactory.getLogger(LoginController.class);
 
     private final LoginView loginView;
     private final MainMenuView mainMenuView;
@@ -28,7 +28,7 @@ public class LoginController {
     }
 
     public void run() {
-        logger.info("Starting login controller");
+        log.info("Starting login controller");
         loginView.setHandleLoginButtonPress(() -> handleLogin(loginView.getUsername(), loginView.getPassword()));
         loginView.setNavigateToRegistrationButtonPress(this::navigateToRegistrationView);
         registrationView.setNavigateToLoginButtonPress(this::navigateToLoginView);
@@ -36,35 +36,35 @@ public class LoginController {
     }
 
     public void handleLogin(String username, String password) {
-        logger.info("Login attempt with username: {}", username);
+        log.info("Login attempt with username: {}", username);
         if (authenticationService.authenticate(username, password)) {
-            logger.info("Authentication successful for username: {}", username);
+            log.info("Authentication successful for username: {}", username);
             loginView.showMessage("Successfully logged in!");
 
             loginView.close();
-            logger.info("Closed LoginView window after successful login");
+            log.info("Closed LoginView window after successful login");
 
             mainMenuView.display();
         } else {
-            logger.warn("Authentication failed for username: {}", username);
+            log.warn("Authentication failed for username: {}", username);
             loginView.showMessage("Username or password is incorrect. Please try again.");
             loginView.display();
         }
     }
 
     public void navigateToRegistrationView() {
-        logger.info("Navigating to RegistrationView");
+        log.info("Navigating to RegistrationView");
         loginView.close();
-        logger.info("Closed LoginView window before navigating to RegistrationView");
+        log.info("Closed LoginView window before navigating to RegistrationView");
         registrationView.display();
-        logger.info("Finished navigation to RegistrationView");
+        log.info("Finished navigation to RegistrationView");
     }
 
     public void navigateToLoginView() {
-        logger.info("Navigating to LoginView");
+        log.info("Navigating to LoginView");
         registrationView.close();
-        logger.info("Closed RegistrationView window before navigating to LoginView");
+        log.info("Closed RegistrationView window before navigating to LoginView");
         loginView.display();
-        logger.info("Finished navigation to LoginView");
+        log.info("Finished navigation to LoginView");
     }
 }

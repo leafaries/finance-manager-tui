@@ -1,5 +1,6 @@
 package com.leafaries.tui.view;
 
+import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.gui2.*;
 import com.googlecode.lanterna.gui2.dialogs.MessageDialog;
 import com.googlecode.lanterna.gui2.dialogs.MessageDialogButton;
@@ -7,9 +8,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
+
 @Component
 public class LoginView {
-    private static final Logger logger = LoggerFactory.getLogger(LoginView.class);
+    private static final TerminalSize TEXT_FIELD_SIZE = new TerminalSize(16, 1);
+
+    private static final Logger log = LoggerFactory.getLogger(LoginView.class);
 
     private final WindowBasedTextGUI gui;
     private final BasicWindow window;
@@ -18,22 +23,20 @@ public class LoginView {
     private Runnable handleLoginButtonPress;
     private Runnable navigateToRegistrationButtonPress;
 
-    public LoginView(WindowBasedTextGUI gui,
-                     RegistrationView registrationView,
-                     MainMenuView mainMenuView) {
+    public LoginView(WindowBasedTextGUI gui) {
         this.gui = gui;
         this.window = new BasicWindow("Login");
     }
 
     private void initializeComponents() {
-        logger.debug("Initializing LoginView components");
+        log.debug("Initializing LoginView components");
         Panel panel = new Panel();
 
         Label usernameLabel = new Label("Username");
-        usernameField = new TextBox();
+        usernameField = new TextBox(TEXT_FIELD_SIZE);
 
         Label passwordLabel = new Label("Password");
-        passwordField = new TextBox().setMask('*');
+        passwordField = new TextBox(TEXT_FIELD_SIZE).setMask('*');
 
         panel.addComponent(usernameLabel);
         panel.addComponent(usernameField);
@@ -44,62 +47,64 @@ public class LoginView {
         panel.addComponent(new Button("Login", this::handleLogin));
         panel.addComponent(new Button("Don't have account?", this::navigateToRegistrationView));
 
-        window.setComponent(panel.withBorder(Borders.singleLine())); // TODO: Change if looks bad
-        logger.debug("LoginView components initialized");
+        window.setComponent(panel.withBorder(Borders.doubleLineReverseBevel()));
+        window.setHints(Collections.singleton(Window.Hint.CENTERED));
+
+        log.debug("LoginView components initialized");
     }
 
     public void display() {
-        logger.info("Displaying the LoginView");
+        log.info("Displaying the LoginView");
         initializeComponents();
         gui.addWindowAndWait(window);
-        logger.info("Closed the LoginView");
+        log.info("Closed the LoginView");
     }
 
     public void showMessage(String message) {
-        logger.info("Display message dialog with message: {}", message);
+        log.info("Display message dialog with message: {}", message);
         MessageDialog.showMessageDialog(gui, "Message", message, MessageDialogButton.OK);
     }
 
     private void handleLogin() {
         if (handleLoginButtonPress != null) {
-            logger.info("Login button pressed");
+            log.info("Login button pressed");
             handleLoginButtonPress.run();
         } else {
-            logger.warn("Login button press handler is not set");
+            log.warn("Login button press handler is not set");
         }
     }
 
     private void navigateToRegistrationView() {
         if (navigateToRegistrationButtonPress != null) {
-            logger.info("Navigating to RegistrationView");
+            log.info("Navigating to RegistrationView");
             navigateToRegistrationButtonPress.run();
         } else {
-            logger.warn("Navigate to registration button press handler is not set");
+            log.warn("Navigate to registration button press handler is not set");
         }
     }
 
     public void setHandleLoginButtonPress(Runnable handleLoginButtonPress) {
         this.handleLoginButtonPress = handleLoginButtonPress;
-        logger.debug("Set login button press handler");
+        log.debug("Set login button press handler");
     }
 
     public void setNavigateToRegistrationButtonPress(Runnable navigateToRegistrationButtonPress) {
         this.navigateToRegistrationButtonPress = navigateToRegistrationButtonPress;
-        logger.debug("Set navigate to registration button press handler");
+        log.debug("Set navigate to registration button press handler");
     }
 
     public String getPassword() {
-        logger.debug("Getting password field");
+        log.debug("Getting password field");
         return passwordField.getText();
     }
 
     public String getUsername() {
-        logger.debug("Getting username field");
+        log.debug("Getting username field");
         return usernameField.getText();
     }
 
     public void close() {
         window.close();
-        logger.info("LoginView window closed");
+        log.info("LoginView window closed");
     }
 }

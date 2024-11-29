@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Application {
-    private static final Logger logger = LoggerFactory.getLogger(Application.class);
+    private static final Logger log = LoggerFactory.getLogger(Application.class);
 
     private final LoginController loginController;
 
@@ -17,8 +17,8 @@ public class Application {
     }
 
     public void run() {
-        logger.info("Starting application");
+        log.info("Starting application");
         loginController.run();
-        logger.info("Ending application");
+        log.info("Ending application");
     }
 }

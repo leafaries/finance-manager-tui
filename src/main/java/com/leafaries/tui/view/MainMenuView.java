@@ -3,29 +3,19 @@ package com.leafaries.tui.view;
 import com.googlecode.lanterna.gui2.*;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
+
 @Component
 public class MainMenuView {
     private final WindowBasedTextGUI gui;
 
-    private final RegistrationView registrationView;
-    private final TransactionView transactionView;
-    private final UserView userView;
-    private final WalletScreen walletScreen;
-
-    public MainMenuView(WindowBasedTextGUI gui,
-                        RegistrationView registrationView,
-                        TransactionView transactionView,
-                        UserView userView,
-                        WalletScreen walletScreen) {
+    public MainMenuView(WindowBasedTextGUI gui) {
         this.gui = gui;
-        this.registrationView = registrationView;
-        this.transactionView = transactionView;
-        this.userView = userView;
-        this.walletScreen = walletScreen;
     }
 
     public void display() {
         BasicWindow mainMenuWindow = new BasicWindow("Main Menu");
+        mainMenuWindow.setHints(Collections.singleton(Window.Hint.CENTERED));
         Panel mainMenuPanel = new Panel(new GridLayout(1));
 
 //        mainMenuPanel.addComponent(new Button("Register", () -> {
