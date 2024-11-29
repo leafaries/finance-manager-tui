@@ -4,10 +4,10 @@ import com.googlecode.lanterna.gui2.*;
 import org.springframework.stereotype.Component;
 
 @Component
-public class WalletScreen {
+public class WalletView {
     private final WindowBasedTextGUI gui;
 
-    public WalletScreen(WindowBasedTextGUI gui) {
+    public WalletView(WindowBasedTextGUI gui) {
         this.gui = gui;
     }
 
