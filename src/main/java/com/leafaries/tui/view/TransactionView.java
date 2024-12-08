@@ -1,15 +1,14 @@
 package com.leafaries.tui.view;
 
 import com.googlecode.lanterna.gui2.*;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+@AllArgsConstructor
 @Component
 public class TransactionView {
-    private final WindowBasedTextGUI gui;
 
-    public TransactionView(WindowBasedTextGUI gui) {
-        this.gui = gui;
-    }
+    private final WindowBasedTextGUI gui;
 
     public void show() {
         BasicWindow window = new BasicWindow("Record Transaction");
@@ -39,4 +38,5 @@ public class TransactionView {
         window.setComponent(transactionPanel);
         gui.addWindowAndWait(window);
     }
+
 }

@@ -1,17 +1,16 @@
 package com.leafaries.tui.view;
 
 import com.googlecode.lanterna.gui2.*;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 
+@AllArgsConstructor
 @Component
 public class MainMenuView {
-    private final WindowBasedTextGUI gui;
 
-    public MainMenuView(WindowBasedTextGUI gui) {
-        this.gui = gui;
-    }
+    private final WindowBasedTextGUI gui;
 
     public void display() {
         BasicWindow mainMenuWindow = new BasicWindow("Main Menu");
@@ -31,4 +30,5 @@ public class MainMenuView {
         mainMenuWindow.setComponent(mainMenuPanel);
         gui.addWindowAndWait(mainMenuWindow);
     }
+
 }

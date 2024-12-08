@@ -1,13 +1,16 @@
 package com.leafaries.tui.model;
 
-public class WalletHttpRequestDto {
-    public String name;
-    public Double balance;
-    public String currency;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-    public WalletHttpRequestDto(Double balance, String currency, String name) {
-        this.balance = balance;
-        this.currency = currency;
-        this.name = name;
-    }
+@AllArgsConstructor
+@Getter
+@Setter
+public class WalletHttpRequestDto {
+
+    private String name;
+    private Double balance;
+    private String currency;
+
 }

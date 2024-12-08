@@ -1,17 +1,19 @@
 package com.leafaries.tui.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 
+@AllArgsConstructor
+@Getter
+@Setter
 public class WalletResponseDto {
-    public Long id;
-    public String name;
-    public BigDecimal balance;
-    public String currency;
 
-    public WalletResponseDto(BigDecimal balance, String currency, Long id, String name) {
-        this.balance = balance;
-        this.currency = currency;
-        this.id = id;
-        this.name = name;
-    }
+    private Long id;
+    private String name;
+    private BigDecimal balance;
+    private String currency;
+
 }

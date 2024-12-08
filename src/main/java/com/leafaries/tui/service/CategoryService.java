@@ -2,19 +2,17 @@ package com.leafaries.tui.service;
 
 import com.leafaries.tui.model.CategoryDto;
 import com.leafaries.tui.model.CreateCategoryDto;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class CategoryService {
-    private final WebClient webClient;
 
-    public CategoryService(WebClient webClient) {
-        this.webClient = webClient;
-    }
+    private final WebClient webClient;
 
     public void createCategory(CreateCategoryDto createCategoryDto) {
         // TODO: Implement
@@ -37,4 +35,5 @@ public class CategoryService {
         // TODO: Implement
         return null;
     }
+
 }

@@ -1,12 +1,14 @@
 package com.leafaries.tui.service;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class AuthenticationService {
+
     public boolean authenticate(String username, String password) {
         // TODO: Implement authentication logic
         // Placeholder authentication logic
         return "user".equals(username) && "pass".equals(password);
     }
+
 }

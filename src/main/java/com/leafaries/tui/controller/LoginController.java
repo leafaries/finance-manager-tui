@@ -4,28 +4,19 @@ import com.leafaries.tui.service.AuthenticationService;
 import com.leafaries.tui.view.LoginView;
 import com.leafaries.tui.view.MainMenuView;
 import com.leafaries.tui.view.RegistrationView;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 
+@Slf4j
+@AllArgsConstructor
 @Controller
 public class LoginController {
-    private static final Logger log = LoggerFactory.getLogger(LoginController.class);
 
     private final LoginView loginView;
     private final MainMenuView mainMenuView;
     private final RegistrationView registrationView;
     private final AuthenticationService authenticationService;
-
-    public LoginController(LoginView loginView,
-                           RegistrationView registrationView,
-                           MainMenuView mainMenuView,
-                           AuthenticationService authenticationService) {
-        this.loginView = loginView;
-        this.registrationView = registrationView;
-        this.mainMenuView = mainMenuView;
-        this.authenticationService = authenticationService;
-    }
 
     public void run() {
         log.info("Starting login controller");
@@ -67,4 +58,5 @@ public class LoginController {
         loginView.display();
         log.info("Finished navigation to LoginView");
     }
+
 }

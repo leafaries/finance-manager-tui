@@ -105,6 +105,13 @@
       <version>4.12.0</version>
     </dependency>
 
+    <!-- Lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.36</version>
+    </dependency>
+
     <!-- Logging -->
     <dependency>
       <groupId>org.springframework.boot</groupId>

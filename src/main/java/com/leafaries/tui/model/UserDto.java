@@ -1,13 +1,16 @@
 package com.leafaries.tui.model;
 
-public class UserDto {
-    public Long id;
-    public String username;
-    public String password;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-    public UserDto(Long id, String password, String username) {
-        this.id = id;
-        this.password = password;
-        this.username = username;
-    }
+@AllArgsConstructor
+@Getter
+@Setter
+public class UserDto {
+
+    private Long id;
+    private String username;
+    private String password;
+
 }

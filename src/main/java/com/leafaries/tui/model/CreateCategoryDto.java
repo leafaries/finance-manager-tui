@@ -1,9 +1,14 @@
 package com.leafaries.tui.model;
 
-public class CreateCategoryDto {
-    public String name;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-    public CreateCategoryDto(String name) {
-        this.name = name;
-    }
+@AllArgsConstructor
+@Getter
+@Setter
+public class CreateCategoryDto {
+
+    private String name;
+
 }

@@ -4,17 +4,16 @@ import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.gui2.*;
 import com.googlecode.lanterna.gui2.dialogs.MessageDialog;
 import com.googlecode.lanterna.gui2.dialogs.MessageDialogButton;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 
+@Slf4j
 @Component
 public class LoginView {
-    private static final TerminalSize TEXT_FIELD_SIZE = new TerminalSize(16, 1);
 
-    private static final Logger log = LoggerFactory.getLogger(LoginView.class);
+    private static final TerminalSize TEXT_FIELD_SIZE = new TerminalSize(16, 1);
 
     private final WindowBasedTextGUI gui;
     private final BasicWindow window;
@@ -107,4 +106,5 @@ public class LoginView {
         window.close();
         log.info("LoginView window closed");
     }
+
 }

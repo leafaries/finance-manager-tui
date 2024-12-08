@@ -2,16 +2,17 @@ package com.leafaries.tui.service;
 
 import com.leafaries.tui.model.TransactionCreateDto;
 import com.leafaries.tui.model.TransactionDto;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 
+@AllArgsConstructor
+@Service
 public class TransactionService {
-    private final WebClient webClient;
 
-    public TransactionService(WebClient webClient) {
-        this.webClient = webClient;
-    }
+    private final WebClient webClient;
 
     public void createTransaction(TransactionCreateDto transactionCreateDto) {
         // TODO: Implement
@@ -34,4 +35,5 @@ public class TransactionService {
         // TODO: Implement
         return null;
     }
+
 }

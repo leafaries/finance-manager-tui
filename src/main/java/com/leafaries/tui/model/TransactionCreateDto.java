@@ -1,17 +1,18 @@
 package com.leafaries.tui.model;
 
-public class TransactionCreateDto {
-    public Double amount;
-    public Long walletId;
-    public String date;
-    public String category;
-    public String notes;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-    public TransactionCreateDto(Double amount, String category, String date, String notes, Long walletId) {
-        this.amount = amount;
-        this.category = category;
-        this.date = date;
-        this.notes = notes;
-        this.walletId = walletId;
-    }
+@AllArgsConstructor
+@Getter
+@Setter
+public class TransactionCreateDto {
+
+    private Double amount;
+    private Long walletId;
+    private String date;
+    private String category;
+    private String notes;
+
 }

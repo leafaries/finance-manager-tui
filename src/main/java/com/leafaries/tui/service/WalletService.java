@@ -2,18 +2,17 @@ package com.leafaries.tui.service;
 
 import com.leafaries.tui.model.WalletHttpRequestDto;
 import com.leafaries.tui.model.WalletResponseDto;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class WalletService {
-    private final WebClient webClient;
 
-    public WalletService(WebClient webClient) {
-        this.webClient = webClient;
-    }
+    private final WebClient webClient;
 
     public void createWallet(WalletHttpRequestDto walletHttpRequestDto) {
         // TODO: Implement
@@ -36,4 +35,5 @@ public class WalletService {
         // TODO: Implement
         return null;
     }
+
 }

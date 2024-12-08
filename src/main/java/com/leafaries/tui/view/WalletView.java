@@ -1,15 +1,14 @@
 package com.leafaries.tui.view;
 
 import com.googlecode.lanterna.gui2.*;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+@AllArgsConstructor
 @Component
 public class WalletView {
-    private final WindowBasedTextGUI gui;
 
-    public WalletView(WindowBasedTextGUI gui) {
-        this.gui = gui;
-    }
+    private final WindowBasedTextGUI gui;
 
     public void show() {
         BasicWindow window = new BasicWindow("Wallet Management");
@@ -31,4 +30,5 @@ public class WalletView {
         window.setComponent(walletPanel);
         gui.addWindowAndWait(window);
     }
+
 }
