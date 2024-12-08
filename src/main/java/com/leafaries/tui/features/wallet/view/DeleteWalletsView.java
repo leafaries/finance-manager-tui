@@ -1,13 +1,13 @@
-package com.leafaries.tui.view;
+package com.leafaries.tui.features.wallet.view;
 
-import com.googlecode.lanterna.gui2.*;
+import com.googlecode.lanterna.gui2.BasicWindow;
+import com.googlecode.lanterna.gui2.WindowBasedTextGUI;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @AllArgsConstructor
 @Component
-public class ViewWalletsView {
-
+public class DeleteWalletsView {
     private WindowBasedTextGUI gui;
 
     // TODO: Implement

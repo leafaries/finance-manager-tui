@@ -16,8 +16,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 import java.io.IOException;
 
 @Slf4j
-@Configuration
 @ComponentScan(basePackages = {"com.leafaries.tui"})
+@Configuration
 public class AppConfig implements DisposableBean {
 
     private Screen screen;
