@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono;
 
 @AllArgsConstructor
 @Service
-public class WalletService {
+public class HttpWalletGateway implements WalletGateway {
 
     private final WebClient webClient;
 
